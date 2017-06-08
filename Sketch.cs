@@ -14,8 +14,8 @@ public class Sketch : MonoBehaviour {
         }
 		RevenueTest2[] rt2 = JsonReader.Deserialize<RevenueTest2[]>(jsonResponse);
 
-		int totalCubes = rt2.Length;
-        int totalDistance = 5;
+		int totalCubes = 10;
+        int totalDistance = 2;
         int i = 0;
 
 		foreach (RevenueTest2 revenue in rt2)
@@ -29,7 +29,9 @@ public class Sketch : MonoBehaviour {
             GameObject newCube = (GameObject)Instantiate(myPrefab, new Vector3(x, y, z), Quaternion.identity);
             newCube.GetComponent<myCubeScript>().setSize((1.0f - perc) * 2);
             newCube.GetComponent<myCubeScript>().ratateSpeed = perc;
-			//newCube.GetComponentInChildren<TextMesh>().text = revenue.City;
+			newCube.GetComponentInChildren<TextMesh>().text = revenue.City;
+		    newCube.GetComponent<Renderer>().material.color = Color.blue; 
+
 
         }
     }
